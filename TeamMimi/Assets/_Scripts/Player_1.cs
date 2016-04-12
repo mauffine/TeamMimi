@@ -17,6 +17,9 @@ public class Player_1 : MonoBehaviour {
     int Playerno;
     [SerializeField]
     private GameObject dText;
+    [SerializeField]
+    private GameObject Tomb;
+
 
     // Use this for initialization
     void Start()
@@ -100,6 +103,9 @@ public class Player_1 : MonoBehaviour {
 
         move.x = moveHorizontal;
         transform.Translate(move * speed * Time.deltaTime);
+
+        if (Health <= 0)
+            Death(rigid);
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -162,6 +168,12 @@ public class Player_1 : MonoBehaviour {
         Vector2 tPos = new Vector2(rb.transform.position.x, rb.transform.position.y + 0.5f);
         dText.GetComponent<DamageText>().CreateText(tPos, damage.ToString());
         Debug.Log(tPos);
+    }
+
+    void Death(Rigidbody2D rigid)
+    {
+        GameObject.Instantiate(Tomb,rigid.position, Quaternion.Euler(Vector3.zero));
+        GameObject.Destroy(this.gameObject);
     }
 
 }
