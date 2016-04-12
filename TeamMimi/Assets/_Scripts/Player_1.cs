@@ -1,14 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player_1 : MonoBehaviour {
+public class Player_1 : MonoBehaviour
+{
+    [SerializeField]
     float speed;
+    [SerializeField]
     float jump;
     Vector2 move;
     public bool canJump;
     public int Health = 100;
     public float chargeLimit=25;
+    [SerializeField]
     float chargeTime = 5;
+    [SerializeField]
     float chargeSpeed;
     float charge;
     bool isCharging;
@@ -120,15 +125,7 @@ public class Player_1 : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D col)
     {
         Debug.LogFormat("Enter: " + col.gameObject.tag);
-        if (col.gameObject.CompareTag("Platform"))
-        {
-            canJump = true;
-        }
-
-    }
-
-    void OnTriggerEnter2D(Collider2D col)
-    {
+        
         if (col.gameObject.CompareTag("Weapon"))
         {
             Debug.LogFormat("Hit Player", col.gameObject.tag);
@@ -138,6 +135,15 @@ public class Player_1 : MonoBehaviour {
                 rb.AddForce(Vector2.left * 0.5f, ForceMode2D.Impulse);
             if (!isFacingRight)
                 rb.AddForce(Vector2.right * 0.5f, ForceMode2D.Impulse);
+        }
+
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Platform"))
+        {
+            canJump = true;
         }
     }
 
