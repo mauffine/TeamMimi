@@ -8,6 +8,10 @@ public class Player_1 : MonoBehaviour {
     public bool canJump;
     public int Health = 100;
     bool isFacingRight;
+    [SerializeField]
+    int Playerno;
+    [SerializeField]
+    private GameObject dText;
 
     // Use this for initialization
     void Start()
@@ -22,30 +26,31 @@ public class Player_1 : MonoBehaviour {
     void FixedUpdate()
     {
         Rigidbody2D rigid = GetComponent<Rigidbody2D>();
-        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveHorizontal = 0;
+
        
-        if (Input.GetAxis("P1xAxis") > 0.5f)
+        if (Input.GetAxis("P"+Playerno.ToString()+"xAxis") > 0.5f)
         {
+            //Debug.LogFormat("Player no: {0}", Playerno);
             if (isFacingRight==false)
                 Flip();
             moveHorizontal = moveHorizontal + speed;
         }
 
-        if (Input.GetAxis("P1xAxis") < -0.5f)
+        if (Input.GetAxis("P" + Playerno.ToString() + "xAxis") < -0.5f)
         {
             if (isFacingRight==true)
                 Flip();
             moveHorizontal = moveHorizontal + speed;
         }
 
-        if (Input.GetButton("P1aButton") && IsGrounded())
+        if (Input.GetButton("P" + Playerno.ToString() + "aButton") && IsGrounded())
         {
             rigid.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
         }
 
         move.x = moveHorizontal;
-        rigid.transform.Translate(move * speed * Time.deltaTime);
-
+        transform.Translate(move * speed * Time.deltaTime);
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -56,22 +61,30 @@ public class Player_1 : MonoBehaviour {
             canJump = true;
         }
 
-        if(col.gameObject.CompareTag("player"))
-        {
-            col.gameObject.SendMessage("ApplyDamage");
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            if (isFacingRight)
-                rb.AddForce(Vector2.left * 2, ForceMode2D.Impulse);
-            if (!isFacingRight)
-                rb.AddForce(Vector2.right * 2, ForceMode2D.Impulse);
-        }
+       
 
     }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Weapon"))
+        {
+            Debug.LogFormat("Hit Player", col.gameObject.tag);
+            ApplyDamage();
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            if (isFacingRight)
+                rb.AddForce(Vector2.left * 0.5f, ForceMode2D.Impulse);
+            if (!isFacingRight)
+                rb.AddForce(Vector2.right * 0.5f, ForceMode2D.Impulse);
+        }
+    }
+
+
     void OnCollisionExit2D(Collision2D col)
     {
         Debug.LogFormat("Exit: " + col.gameObject.tag);
-
-        canJump = false;
+        if(col.gameObject.CompareTag("Platform"))
+            canJump = false;
     }
 
     bool IsGrounded()
@@ -88,6 +101,16 @@ public class Player_1 : MonoBehaviour {
 
         isFacingRight = !isFacingRight;
 
+    }
+
+    void ApplyDamage()
+    {
+        int damage = 10;
+        Health -= damage;
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        Vector2 tPos = new Vector2(rb.transform.position.x, rb.transform.position.y + 0.5f);
+        dText.GetComponent<DamageText>().CreateText(tPos, damage.ToString());
+        Debug.Log(tPos);
     }
 
 }
