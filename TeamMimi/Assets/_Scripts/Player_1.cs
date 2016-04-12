@@ -7,6 +7,11 @@ public class Player_1 : MonoBehaviour {
     Vector2 move;
     public bool canJump;
     public int Health = 100;
+    public float chargeLimit=25;
+    float chargeTime = 5;
+    float chargeSpeed;
+    float charge;
+    bool isCharging;
     bool isFacingRight;
     [SerializeField]
     int Playerno;
@@ -20,6 +25,9 @@ public class Player_1 : MonoBehaviour {
         jump = 8;
         speed = 3.5f;
         isFacingRight = true;
+        isCharging = false;
+        chargeSpeed = 3;
+        charge = 0;
     }
 
     // Update is called once per frame
@@ -28,10 +36,8 @@ public class Player_1 : MonoBehaviour {
         Rigidbody2D rigid = GetComponent<Rigidbody2D>();
         float moveHorizontal = 0;
 
-       
         if (Input.GetAxis("P"+Playerno.ToString()+"xAxis") > 0.5f)
         {
-            //Debug.LogFormat("Player no: {0}", Playerno);
             if (isFacingRight==false)
                 Flip();
             moveHorizontal = moveHorizontal + speed;
@@ -49,6 +55,49 @@ public class Player_1 : MonoBehaviour {
             rigid.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
         }
 
+        if(Input.GetButtonDown("P"+ Playerno.ToString() + "xButton")&& IsGrounded()&& isCharging==false)
+        {
+            while(charge < chargeLimit)
+            {
+                rigid.constraints = RigidbodyConstraints2D.FreezePosition;
+                charge += 0.005f * Time.deltaTime;
+            }
+
+            charge = 0;
+            isCharging = true;
+
+
+            rigid.constraints = RigidbodyConstraints2D.None;
+            rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+            while(charge<=chargeTime)
+            {
+                if (isFacingRight)
+                {
+                    rigid.AddForce(Vector2.right * chargeSpeed, ForceMode2D.Impulse);
+                }
+                else
+                {
+                    rigid.AddForce(Vector2.left * chargeSpeed, ForceMode2D.Impulse);
+                }
+                charge += 0.005f * Time.deltaTime;
+            }
+            charge = 0;
+
+            while (charge < chargeLimit)
+            {
+                rigid.constraints = RigidbodyConstraints2D.FreezePosition;
+                charge += 0.005f * Time.deltaTime;
+            }
+
+            charge = 0;
+            isCharging = false;
+
+            rigid.constraints = RigidbodyConstraints2D.None;
+            rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+
+
         move.x = moveHorizontal;
         transform.Translate(move * speed * Time.deltaTime);
     }
@@ -60,8 +109,6 @@ public class Player_1 : MonoBehaviour {
         {
             canJump = true;
         }
-
-       
 
     }
 
@@ -78,7 +125,6 @@ public class Player_1 : MonoBehaviour {
                 rb.AddForce(Vector2.right * 0.5f, ForceMode2D.Impulse);
         }
     }
-
 
     void OnCollisionExit2D(Collision2D col)
     {
@@ -105,7 +151,12 @@ public class Player_1 : MonoBehaviour {
 
     void ApplyDamage()
     {
-        int damage = 10;
+        int damage;
+        if (isCharging)
+            damage = 10;
+        else
+            damage = 5;
+
         Health -= damage;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         Vector2 tPos = new Vector2(rb.transform.position.x, rb.transform.position.y + 0.5f);
