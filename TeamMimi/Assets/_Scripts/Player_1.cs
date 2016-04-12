@@ -8,6 +8,7 @@ public class Player_1 : MonoBehaviour {
     public bool canJump;
     public int Health = 100;
     bool isFacingRight;
+    bool isMoving;
     [SerializeField]
     int Playerno;
     [SerializeField]
@@ -28,27 +29,40 @@ public class Player_1 : MonoBehaviour {
         Rigidbody2D rigid = GetComponent<Rigidbody2D>();
         float moveHorizontal = 0;
 
-       
-        if (Input.GetAxis("P"+Playerno.ToString()+"xAxis") > 0.5f)
+
+        if (Input.GetAxis("P" + Playerno.ToString() + "xAxis") > 0.5f)
         {
             //Debug.LogFormat("Player no: {0}", Playerno);
-            if (isFacingRight==false)
+            if (isFacingRight == false)
                 Flip();
             moveHorizontal = moveHorizontal + speed;
+            if (!isMoving && canJump)
+            {
+                gameObject.GetComponent<CharacterAnimator>().Animate(1);
+                isMoving = true;
+            }
         }
-
-        if (Input.GetAxis("P" + Playerno.ToString() + "xAxis") < -0.5f)
+        else if (Input.GetAxis("P" + Playerno.ToString() + "xAxis") < -0.5f)
         {
-            if (isFacingRight==true)
+            if (isFacingRight == true)
                 Flip();
             moveHorizontal = moveHorizontal + speed;
+            if (!isMoving && canJump)
+            {
+                gameObject.GetComponent<CharacterAnimator>().Animate(1);
+                isMoving = true;
+            }
+        }
+        else if (isMoving)
+        {
+            gameObject.GetComponent<CharacterAnimator>().Animate(0);
+            isMoving = false;
         }
 
         if (Input.GetButton("P" + Playerno.ToString() + "aButton") && IsGrounded())
         {
             rigid.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
         }
-
         move.x = moveHorizontal;
         transform.Translate(move * speed * Time.deltaTime);
     }
@@ -108,7 +122,11 @@ public class Player_1 : MonoBehaviour {
         int damage = 10;
         Health -= damage;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        Vector2 tPos = new Vector2(rb.transform.position.x, rb.transform.position.y + 0.5f);
+        Vector2 tPos;
+        if (isFacingRight)
+            tPos = new Vector2(rb.transform.position.x - 1.3f, rb.transform.position.y + 0.5f);
+        else
+            tPos = new Vector2(rb.transform.position.x - .7f, rb.transform.position.y + 0.5f);
         dText.GetComponent<DamageText>().CreateText(tPos, damage.ToString());
         Debug.Log(tPos);
     }
