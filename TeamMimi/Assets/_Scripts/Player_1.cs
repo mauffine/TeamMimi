@@ -21,16 +21,16 @@ public class Player_1 : MonoBehaviour {
     bool cooldown = false;
     [SerializeField]
     private GameObject Tomb;
-	
+
     // Use this for initialization
     void Start()
     {
         canJump = true;
         jump = 14;
-        speed = 3.5f;
+        speed = 2f;
         isFacingRight = true;
         isCharging = false;
-        chargeSpeed = 7;
+        chargeSpeed = 4f;
         charge = 0;
     }
 
@@ -39,8 +39,6 @@ public class Player_1 : MonoBehaviour {
     {
         Rigidbody2D rigid = GetComponent<Rigidbody2D>();
         float moveHorizontal = 0;
-
-
         if (Input.GetAxis("P" + Playerno.ToString() + "xAxis") > 0.5f && !cooldown && !isCharging)
         {
             if (isFacingRight == false)
@@ -187,7 +185,7 @@ public class Player_1 : MonoBehaviour {
 
     void Death(Rigidbody2D rigid)
     {
-        GameObject.Instantiate(Tomb,rigid.position, Quaternion.Euler(Vector3.zero));
+        GameObject.Instantiate(Tomb, new Vector3(rigid.position.x, rigid.position.y + .5f, 0), Quaternion.Euler(Vector3.zero));
         GameObject.Destroy(this.gameObject);
     }
 

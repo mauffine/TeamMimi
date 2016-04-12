@@ -36,9 +36,14 @@ public class HealthBar : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        m_temphealthval = m_player.GetComponent<Player_1>().Health;
-        Value = m_temphealthval;
-        HandleBar();
+        if (m_player == null)
+            Destroy(gameObject);
+        else
+        {
+            m_temphealthval = m_player.GetComponent<Player_1>().Health;
+            Value = m_temphealthval;
+            HandleBar();
+        }
     }
 
     private void HandleBar()
