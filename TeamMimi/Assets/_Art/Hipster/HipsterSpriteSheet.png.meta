@@ -1,0 +1,225 @@
+fileFormatVersion: 2
+guid: c859b39f81802944ab2d8b41c28e424e
+timeCreated: 1460420273
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: HipsterSpriteSheet_0
+    21300002: HipsterSpriteSheet_1
+    21300004: HipsterSpriteSheet_2
+    21300006: HipsterSpriteSheet_3
+    21300008: HipsterSpriteSheet_4
+    21300010: HipsterSpriteSheet_5
+    21300012: HipsterSpriteSheet_6
+    21300014: HipsterSpriteSheet_7
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: HipsterSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 127
+        width: 118
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5, y: 62}
+        - {x: -59, y: 37}
+        - {x: -59, y: 1}
+        - {x: -41, y: -62}
+        - {x: 59, y: -62}
+        - {x: 59, y: 36}
+        - {x: 47, y: 62}
+    - name: HipsterSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 126
+        width: 118
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 45, y: 63}
+        - {x: -59, y: 63}
+        - {x: -59, y: 31}
+        - {x: -24, y: 8}
+        - {x: -8, y: -63}
+        - {x: 49, y: -63}
+        - {x: 49, y: -62}
+        - {x: 59, y: -11}
+        - {x: 59, y: 34}
+    - name: HipsterSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 126
+        width: 114
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 32, y: 63}
+        - {x: -34, y: 63}
+        - {x: -57, y: 44}
+        - {x: -57, y: -13}
+        - {x: 7, y: -63}
+        - {x: 33, y: -63}
+        - {x: 57, y: 6}
+        - {x: 57, y: 32}
+        - {x: 55, y: 37}
+    - name: HipsterSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 126
+        width: 109
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -54.5, y: 62.5}
+        - {x: -54.5, y: -7.5}
+        - {x: -27.5, y: -62.5}
+        - {x: 54.5, y: -62.5}
+        - {x: 54.5, y: 45.5}
+        - {x: 48.5, y: 62.5}
+    - name: HipsterSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 1
+        width: 118
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -40, y: 62}
+        - {x: -59, y: 46}
+        - {x: -59, y: -62}
+        - {x: 26, y: -62}
+        - {x: 59, y: 11}
+        - {x: 59, y: 41}
+        - {x: 2, y: 62}
+    - name: HipsterSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 0
+        width: 118
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23, y: -62}
+        - {x: -22, y: -63}
+        - {x: 53, y: -63}
+        - {x: 59, y: -45}
+        - {x: 59, y: 63}
+        - {x: -59, y: 63}
+        - {x: -59, y: -63}
+        - {x: -25, y: -63}
+        - {x: -27, y: -58}
+        - {x: -30, y: -55}
+        - {x: -31, y: -49}
+    - name: HipsterSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 0
+        width: 114
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8, y: 8}
+        - {x: 22, y: 12}
+        - {x: 57, y: 28}
+        - {x: 57, y: 43}
+        - {x: 44, y: 57}
+        - {x: 16, y: 63}
+        - {x: -49, y: 63}
+        - {x: -57, y: 43}
+        - {x: -57, y: 0}
+        - {x: -32, y: -63}
+        - {x: -11, y: -63}
+        - {x: -9, y: -61}
+        - {x: -9, y: -58}
+        - {x: -6, y: -2}
+    - name: HipsterSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 0
+        width: 109
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 46.5, y: 34.5}
+        - {x: 0.5, y: 62.5}
+        - {x: -41.5, y: 62.5}
+        - {x: -54.5, y: 41.5}
+        - {x: -54.5, y: -62.5}
+        - {x: 19.5, y: -62.5}
+        - {x: 54.5, y: 18.5}
+        - {x: 54.5, y: 36.5}
+        - {x: 48.5, y: 36.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

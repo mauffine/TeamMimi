@@ -11,6 +11,9 @@ public class HealthBar : MonoBehaviour {
     [SerializeField]
     private Image fill;
 
+    [SerializeField]
+    private GameObject m_player;
+
     public float MaxValue
     {
         get; set;
@@ -28,13 +31,12 @@ public class HealthBar : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         MaxValue = 100;
-        m_temphealthval = 100;
     }
 
     // Update is called once per frame
     void Update()
     {
-        m_temphealthval -= 1 * Time.deltaTime;
+        m_temphealthval = m_player.GetComponent<Player_1>().Health;
         Value = m_temphealthval;
         HandleBar();
     }

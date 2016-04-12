@@ -10,7 +10,7 @@ public class Inputmanagertest : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetAxis("P1yAxis") > .2 )
+        if (Input.GetAxis("P1xAxis") > .2 )
         {
             transform.Translate(new Vector3(1, 0, 0));
         }
