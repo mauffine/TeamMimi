@@ -1,9 +1,15 @@
 fileFormatVersion: 2
 guid: 91096dc8ea74935489367560823eb57a
-timeCreated: 1460418785
+timeCreated: 1460439281
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: HipsterSpriteSheet_0
+    21300002: HipsterSpriteSheet_1
+    21300004: HipsterSpriteSheet_2
+    21300006: HipsterSpriteSheet_3
+    21300008: HipsterSpriteSheet_4
+    21300010: HipsterSpriteSheet_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,7 +36,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +44,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,7 +55,144 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: HipsterSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 125.5
+        width: 142
+        height: 125.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 71, y: 12.5}
+        - {x: 71, y: 27.5}
+        - {x: 62, y: 28.5}
+        - {x: 14, y: 63.5}
+        - {x: -30, y: 63.5}
+        - {x: -51, y: 49.5}
+        - {x: -51, y: -62.5}
+        - {x: 27, y: -62.5}
+        - {x: 25, y: -59.5}
+        - {x: 70, y: 10.5}
+    - name: HipsterSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 125.5
+        width: 142
+        height: 125.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21, y: -48.5}
+        - {x: -14, y: -62.5}
+        - {x: 9, y: -62.5}
+        - {x: 71, y: 33.5}
+        - {x: 71, y: 63.5}
+        - {x: -27, y: 63.5}
+        - {x: -33, y: 57.5}
+        - {x: -51, y: 29.5}
+        - {x: -51, y: -7.5}
+        - {x: -42, y: -62.5}
+        - {x: -17, y: -62.5}
+        - {x: -17, y: -57.5}
+        - {x: -20, y: -54.5}
+    - name: HipsterSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 125.5
+        width: 142
+        height: 125.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23, y: 63.5}
+        - {x: -45, y: 40.5}
+        - {x: -48, y: 32.5}
+        - {x: -48, y: 7.5}
+        - {x: -22, y: -62.5}
+        - {x: 16, y: -62.5}
+        - {x: 70, y: 27.5}
+        - {x: 70, y: 51.5}
+        - {x: 14, y: 63.5}
+    - name: HipsterSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 125.5
+        width: 142
+        height: 125.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 69, y: 21.5}
+        - {x: 69, y: 45.5}
+        - {x: 6, y: 62.5}
+        - {x: 3, y: 63.5}
+        - {x: -22, y: 63.5}
+        - {x: -27, y: 60.5}
+        - {x: -44, y: 30.5}
+        - {x: -44, y: -62.5}
+        - {x: 31, y: -62.5}
+        - {x: 33, y: -50.5}
+        - {x: 16, y: -14.5}
+    - name: HipsterSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.5
+        width: 142
+        height: 125.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -51, y: -34.5}
+        - {x: -50, y: -37.5}
+        - {x: -22, y: -48.5}
+        - {x: -21, y: -49.5}
+        - {x: 36, y: -49.5}
+        - {x: 36, y: 63.5}
+        - {x: -42, y: 63.5}
+        - {x: -50, y: 53.5}
+        - {x: -51, y: 50.5}
+      - - {x: 32, y: 45.5}
+        - {x: 26, y: -3.5}
+        - {x: 26, y: -11.5}
+        - {x: 29, y: -13.5}
+        - {x: 34, y: -13.5}
+        - {x: 47, y: -6.5}
+        - {x: 52, y: 24.5}
+        - {x: 52, y: 45.5}
+    - name: HipsterSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 0.5
+        width: 142
+        height: 125.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -40, y: -50.5}
+        - {x: 7, y: -50.5}
+        - {x: 70, y: 9.5}
+        - {x: 70, y: 55.5}
+        - {x: -55, y: 55.5}
+        - {x: -55, y: -39.5}
+      - - {x: -35, y: 63.5}
+        - {x: -34, y: 60.5}
+        - {x: -21, y: 60.5}
+        - {x: -19, y: 62.5}
+        - {x: -19, y: 63.5}
     outline: []
   spritePackingTag: 
   userData: 

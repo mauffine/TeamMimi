@@ -18,16 +18,16 @@ public class Player_1 : MonoBehaviour {
     int Playerno;
     [SerializeField]
     private GameObject dText;
-
+    bool cooldown = false;
     // Use this for initialization
     void Start()
     {
         canJump = true;
-        jump = 8;
+        jump = 14;
         speed = 3.5f;
         isFacingRight = true;
         isCharging = false;
-        chargeSpeed = 3;
+        chargeSpeed = 7;
         charge = 0;
     }
 
@@ -38,9 +38,9 @@ public class Player_1 : MonoBehaviour {
         float moveHorizontal = 0;
 
 
-        if (Input.GetAxis("P"+Playerno.ToString()+"xAxis") > 0.5f)
+        if (Input.GetAxis("P" + Playerno.ToString() + "xAxis") > 0.5f && !cooldown && !isCharging)
         {
-            if (isFacingRight==false)
+            if (isFacingRight == false)
                 Flip();
             moveHorizontal = moveHorizontal + speed;
             if (!isMoving && canJump)
@@ -49,7 +49,7 @@ public class Player_1 : MonoBehaviour {
                 isMoving = true;
             }
         }
-        else if (Input.GetAxis("P" + Playerno.ToString() + "xAxis") < -0.5f)
+        else if (Input.GetAxis("P" + Playerno.ToString() + "xAxis") < -0.5f && !cooldown && !isCharging)
         {
             if (isFacingRight == true)
                 Flip();
@@ -71,46 +71,43 @@ public class Player_1 : MonoBehaviour {
             rigid.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
         }
 
-        if(Input.GetButtonDown("P"+ Playerno.ToString() + "xButton")&& IsGrounded()&& isCharging==false)
+        if (Input.GetButtonDown("P" + Playerno.ToString() + "xButton") && IsGrounded() && isCharging == false)
         {
-            while(charge < chargeLimit)
+            if (charge < chargeLimit)
             {
-                rigid.constraints = RigidbodyConstraints2D.FreezePosition;
-                charge += 0.005f * Time.deltaTime;
+                charge += 0.5f * Time.deltaTime;
             }
-
-            charge = 0;
-            isCharging = true;
-
-
-            rigid.constraints = RigidbodyConstraints2D.None;
-            rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
-
-            while(charge<=chargeTime)
+            if (!cooldown)
+                isCharging = true;
+            
+        }
+        if (isCharging)
+        {
+            if (charge < .5f)
             {
-                if (isFacingRight)
-                {
-                    rigid.AddForce(Vector2.right * chargeSpeed, ForceMode2D.Impulse);
-                }
-                else
-                {
-                    rigid.AddForce(Vector2.left * chargeSpeed, ForceMode2D.Impulse);
-                }
-                charge += 0.005f * Time.deltaTime;
+                moveHorizontal = chargeSpeed;
+                charge += Time.deltaTime;
+                gameObject.GetComponent<Animator>().Play("Run");
             }
-            charge = 0;
-
-            while (charge < chargeLimit)
+            else
             {
-                rigid.constraints = RigidbodyConstraints2D.FreezePosition;
-                charge += 0.005f * Time.deltaTime;
+                isCharging = false;
+                cooldown = true;
+                charge = 0;
+                moveHorizontal = speed;
+
+                gameObject.GetComponent<Animator>().Play("Idle");
             }
-
+            
+        }
+        if (cooldown && charge < .5f)
+        {
+            charge += Time.deltaTime;
+        }
+        else if (!isCharging)
+        {
+            cooldown = false;
             charge = 0;
-            isCharging = false;
-
-            rigid.constraints = RigidbodyConstraints2D.None;
-            rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
         move.x = moveHorizontal;
         transform.Translate(move * speed * Time.deltaTime);
