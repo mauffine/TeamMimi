@@ -38,7 +38,7 @@ public class Player_1 : MonoBehaviour {
             moveHorizontal = moveHorizontal + speed;
             if (!isMoving && canJump)
             {
-                gameObject.GetComponent<CharacterAnimator>().Animate(1);
+                gameObject.GetComponent<Animator>().Play("Run");
                 isMoving = true;
             }
         }
@@ -49,13 +49,13 @@ public class Player_1 : MonoBehaviour {
             moveHorizontal = moveHorizontal + speed;
             if (!isMoving && canJump)
             {
-                gameObject.GetComponent<CharacterAnimator>().Animate(1);
+                gameObject.GetComponent<Animator>().Play("Run");
                 isMoving = true;
             }
         }
         else if (isMoving)
         {
-            gameObject.GetComponent<CharacterAnimator>().Animate(0);
+            gameObject.GetComponent<Animator>().Play("Idle");
             isMoving = false;
         }
 
